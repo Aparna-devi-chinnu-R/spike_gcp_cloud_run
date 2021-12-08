@@ -6,7 +6,7 @@ const homeService = () => {
     return {
 
         getResponse:  () => {
-            return  axios.get(`https://spike-api-6ekkrcnqiq-el.a.run.app/home`);
+            return  axios.get(`https://spike-api-6ekkrcnqiq-el.a.run.app`);
         },
         //log
     }

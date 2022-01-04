@@ -1,0 +1,25 @@
+version: '3'
+services:
+  postgres-db:
+    image: "postgres:12.3"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  ayojak-api:
+    container_name: spike-ayojak-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      DATABASE_URL: "jdbc:postgresql://postgres-db:5432/postgres"
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+    depends_on:
+      - postgres-db
+    restart: always

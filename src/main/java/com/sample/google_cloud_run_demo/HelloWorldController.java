@@ -22,6 +22,10 @@ public class HelloWorldController {
         return "Hello " + name;
     }
 
+    @GetMapping("/")
+    public String returnHome(){
+        return "Hello";
+    }
 
     /*
        DATABASE_URL  "jdbc:postgresql://35.200.255.247:5432/postgres"

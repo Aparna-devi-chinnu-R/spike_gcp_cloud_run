@@ -22,7 +22,7 @@ public class Users{
 
     @JsonProperty
     @NotNull
-    @Column(name = "userName")
+    @Column(name = "username")
     private String userName;
 
     public String getUserName() {

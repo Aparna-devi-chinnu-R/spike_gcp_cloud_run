@@ -14,7 +14,6 @@ import javax.persistence.*;
 public class Users{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty
     @NotNull
     @Column(name = "id")

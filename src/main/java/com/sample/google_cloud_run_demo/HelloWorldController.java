@@ -1,13 +1,11 @@
 package com.sample.google_cloud_run_demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloWorldController {
+
 
     private final HelloWorldRepository helloWorldRepository;
 
@@ -20,6 +18,15 @@ public class HelloWorldController {
     public String returnHelloWorld(@PathVariable Long id){
         String name = helloWorldRepository.findId(id).getUserName();
         return "Hello " + name;
+    }
+
+    @PostMapping("/add/{name}")
+    public String addName(@PathVariable String name){
+        Long maxId = helloWorldRepository.getMaxId();
+        System.out.println(maxId);
+        Users user = new Users(maxId + 1, name);
+        helloWorldRepository.save(user);
+        return "entry " +name+ " registered" ;
     }
 
     @GetMapping("/")

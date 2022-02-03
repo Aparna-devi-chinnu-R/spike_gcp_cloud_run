@@ -12,4 +12,10 @@ public interface HelloWorldRepository extends JpaRepository<Users, Long> {
 
     @Query(value = "SELECT * FROM users WHERE ID=?1",nativeQuery = true)
     Users findId(Long id);
+
+    @Override
+    Users save(Users user);
+
+    @Query("select max(id) From Users")
+    Long getMaxId();
 }
